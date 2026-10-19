@@ -1,0 +1,41 @@
+[project]
+name = "energy-forecast"
+version = "0.1.0"
+description = "Day-ahead electricity load forecasting: baselines and backtest harness (OTS Case Study 7)"
+# 3.13+ so spotforecast2 / spotforecast2-safe (which require 3.13) can be added later
+requires-python = ">=3.13"
+dependencies = [
+    # Time series containers, resampling and time-zone handling
+    "pandas>=2.2",
+    # Numeric arrays for metrics
+    "numpy>=2.0",
+    # Gradient-boosted trees for the base ML model
+    "lightgbm>=4.5",
+    # Required by LightGBM's scikit-learn interface (LGBMRegressor)
+    "scikit-learn>=1.5",
+    # ENTSO-E Transparency Platform REST client (actual load download)
+    "entsoe-py>=0.6",
+]
+
+[project.optional-dependencies]
+dev = [
+    # Test runner
+    "pytest>=8.0",
+    # Coverage report
+    "pytest-cov>=5.0",
+    # Linter (unused imports / variables)
+    "ruff>=0.6",
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 88
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
