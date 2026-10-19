@@ -2,8 +2,8 @@
 .env
 
 # Downloaded data and generated results
-data/
-results/
+/data/
+/results/
 
 # Python
 .venv/
